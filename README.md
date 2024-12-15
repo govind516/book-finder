@@ -1,70 +1,208 @@
-# Getting Started with Create React App
+# Book Finder App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the **Book Finder App**! This application allows users to search for books by title, author, and language using the Open Library API. The app displays search results with book covers, titles, authors, and publication details in an interactive and visually appealing interface.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+1. [Features](#features)
+2. [Tech Stack](#tech-stack)
+3. [Requirements](#requirements)
+4. [Project Setup](#project-setup)
+5. [Running the App](#running-the-app)
+6. [Usage](#usage)
+7. [Project Structure](#project-structure)
+8. [API Details](#api-details)
+9. [Screenshots](#screenshots)
+10. [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Search for books by **title**, **author**, and **language**.
+- Interactive and user-friendly interface with:
+  - Book covers (or placeholders when unavailable).
+  - Titles, authors, and publication details.
+- Beautiful **hover effects** for book cards.
+- Loading spinner animation during API requests.
+- Error handling for failed requests.
+- Responsive design optimized for desktop and mobile screens.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The app uses the following technologies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Frontend:** React.js (with Hooks)
+- **Styling:** Tailwind CSS
+- **API Integration:** Open Library API
+- **Package Manager:** npm (Node Package Manager)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Requirements
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Before running this project, ensure you have the following installed:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Node.js** (v14 or higher) - [Download Here](https://nodejs.org/)
+2. **npm** (comes with Node.js)
+3. A code editor like **VS Code**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project Setup
 
-## Learn More
+Follow these steps to set up and run the project:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. Clone the Repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clone the project to your local machine using Git:
 
-### Code Splitting
+```bash
+https://github.com/govind516/book-finder.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Navigate into the project directory:
 
-### Analyzing the Bundle Size
+```bash
+cd book-finder
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 2. Install Dependencies
 
-### Making a Progressive Web App
+Install the required npm packages by running:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm install
+```
 
-### Advanced Configuration
+### 3. Tailwind CSS Configuration (if needed)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Ensure Tailwind CSS is correctly set up in your project. If you need to configure it manually, run:
 
-### Deployment
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Then, add the following to your `tailwind.config.js` file:
 
-### `npm run build` fails to minify
+```javascript
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Include Tailwind's CSS in your `src/index.css` file:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+---
+
+## Running the App
+
+To start the development server, run:
+
+```bash
+npm start
+```
+
+The app will be available at **`http://localhost:3000`**.
+
+---
+
+## Usage
+
+1. Enter the **title** or **author** of a book in the search inputs.
+2. Use the dropdown menu to select a specific **language** (optional).
+3. Click the **Search** button to retrieve results.
+4. View the results displayed as cards with book details:
+   - Book cover image (if available).
+   - Book title.
+   - Author(s).
+   - First publication year.
+5. If no cover image is available, a placeholder will be displayed.
+
+---
+
+## Project Structure
+
+The project has the following structure:
+
+```
+book-finder/
+├── public/
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── App.js       # Main React Component
+│   ├── index.js     # ReactDOM Rendering
+│   ├── index.css    # TailwindCSS Styling
+│   ├── assets/      # Images or static assets (optional)
+│   └── components/  # Reusable components (optional)
+├── package.json     # Project dependencies and scripts
+└── README.md        # Project documentation
+```
+
+---
+
+## API Details
+
+The app integrates with the **Open Library API**:
+
+- **Base Endpoint:** `https://openlibrary.org/search.json`
+- **Query Parameters:**
+  - `title`: Search for a book by title.
+  - `author`: Search for a book by the author.
+  - `language`: Search for books in a specific language.
+- **Cover Images:** Book covers are fetched using:
+
+```
+https://covers.openlibrary.org/b/id/{cover_id}-L.jpg
+```
+
+Example request:
+
+```
+https://openlibrary.org/search.json?title=Leaves+of+Grass&author=Walt+Whitman
+```
+
+---
+
+## Screenshots
+
+### Home Page with Search Form
+
+![Screenshot 2024-12-15 231249](https://github.com/user-attachments/assets/2b19f4b4-373f-498a-8769-4cefeb727386)
+
+### Book Results
+
+![Screenshot 2024-12-15 231150](https://github.com/user-attachments/assets/6e5c6b21-7c40-4905-969d-20abbee45d43)
+
+### No Cover Placeholder
+
+![Screenshot 2024-12-15 231226](https://github.com/user-attachments/assets/083d2920-9fa3-4c49-a27c-b62767ed6457)
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Thank you for checking out the **Book Finder App**! Feel free to open an issue if you have any questions or suggestions. 😊
+
